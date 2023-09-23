@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<section id="sign_up">
+    <h1><a href="{{ url_for('home') }}">Home</a></h1>
+    <h2>Sign Up:</h2>
+   <p>New to Ticket Sever
+    <a href="{{ url_for('register_account') }}">Sign Up!</a></p>
+</section>
+<section id="login">
+    <h2>Login:</h2>
+
+    <form method="post" action="" novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.username.label }}
+        {{ form.username() }}
+        {% for error in form.username.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.password.label }}
+        {{ form.password() }}
+        {% for error in form.password.errors %}
+            {{ error }}
+        {% endfor %}
+        {{ form.submit() }}
+    </form>
+    <a class="button" href="{{ url_for('forgot') }}">Forget Password?</a>
+    {{ message}}
+</section>
+{% endblock %}

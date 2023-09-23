@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<section id="gig_id">
+    <h2>Gig Information</h2>
+    <p>{{ gigs["artist_name"] }} is performing in {{ gigs["gig_venue"] }} on the {{ gigs["gig_date"] }}.</p>
+    <p>Get ready for the experience of a lifetime at the {{ gigs["gig_venue"] }} !</p>
+    <p>Genre: {{ gigs["genre"] }} </p>
+    <p>Price: £{{ gigs["price"] }}</p>
+    <a class="button" href="{{ url_for('add_to_cart', gig_id=gigs['gig_id'] ) }}">Add to Cart</a>
+</section>
+
+<section class="container">
+    <h3>Review</h3>
+{%if reviews%}
+{% for review in reviews %}
+    <article>
+        <h5 class="user_review">Username: {{ review["username"] }}</h5>
+        <p class="user_review">Score: {{ review["score"] }}/5</p>
+        <p class="user_review">{{ review["review"] }}</p>
+    </article>
+    {% endfor %}
+    {%else%}
+    <p>There are no reviews for this artist.</p>
+{%endif%}
+</section>
+<section>
+    <form method="post" action="" novalidate>
+        {{form.hidden_tag()}}
+        {{form.score.label}}
+        {{form.score()}}
+        {% for error in form.score.errors %}
+        {{error}}
+        {%endfor%}
+        <br/>
+        {{form.review.label}}
+        <br /> 
+        {{form.review()}}
+        {% for error in form.review.errors %}
+        {{error}}
+        {%endfor%}
+        {{form.submit()}}
+    </form>
+</section>
+
+{% endblock %}

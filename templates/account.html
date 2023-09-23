@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block main_content %}
+
+<section class="container">
+    <h2>Tickets Purchased</h2>
+    {% if purchases%}
+        <table>
+            <tr>
+                <th>Artist</th>
+                <th>Venue</th>
+                <th>Date</th>
+                <th>price</th>
+                <th>Option</th>
+            </tr>
+            {% for purchase in purchases %}
+            <tr>
+                <td>{{ purchase["artist_name"] }}</td>
+                <td>{{ purchase["gig_venue"] }}</td>
+                <td>{{ purchase["gig_date"] }}</td>
+                <td>£{{ purchase["price"] }}</td>
+                <td><a class="refund" href="{{ url_for('refund',purchase_id=purchase['purchase_id'] ) }}">Refund Tickets</a></td>
+                
+            </tr>
+            {%endfor%}
+        </table>
+    {%else%}
+        <p>You have purchased no tickets</p>
+    {%endif%}
+</section>
+
+<section class="container">
+    <h2>Reviews</h2>
+    {%if reviews%}
+    
+        {% for review in reviews %}
+        <article>
+            <h5 class="user_review">Username: {{ review["username"] }}</h5>
+            <p class="user_review">Score: {{ review["score"] }}/5</p>
+            <p class="bottom_user_review">{{ review["review"] }}</p>
+            <a class="button" href="{{url_for('delete_review',review_id=review['review_id'] )}}">Delete review</a>
+        </article>
+        {% endfor %}
+    {%else%}
+        <p>You haven't written any reviews</p>
+    {%endif%}
+    
+</section>
+<h3>Account Options</h3>
+<ul>
+    <li><a class="button" href="{{ url_for('delete') }}">Delete Account</a></li>
+    <li><a class="button" href="{{url_for('logout')}}">Logout</a></li>
+</ul>
+{% endblock %}

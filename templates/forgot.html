@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<section class="forgot">
+    <h1>Password Reset</h1>
+        <form method="post" action=" " novalidate>
+            {{ form.hidden_tag() }}
+            {{ form.username.label }}
+            {{ form.username() }}
+            <br/>
+            {{ form.email.label }}
+            {{ form.email() }}
+            {{ form.submit() }}
+        </form>
+        <p>{{ message }}</p>
+</section>
+
+{% endblock %}

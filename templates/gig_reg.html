@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<section id="gig_creation">
+<article >
+    <h1>Gig Registration</h1>
+    <form method="post" action="" novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.artist_name.label }}
+        {{ form.artist_name() }}
+        {% for error in form.artist_name.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.gig_date.label }}
+        {{ form.gig_date() }}
+        {% for error in form.gig_date.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.gig_venue.label }}
+        {{ form.gig_venue() }}
+        {% for error in form.gig_venue.errors %}
+            {{ error }}
+        {% endfor %}
+        <br /> 
+        {{ form.genre.label }}
+        {{ form.genre() }}
+        {% for error in form.genre.errors %}
+            {{ error }}
+        {% endfor %}
+        <br /> 
+        {{ form.num_of_tickets.label }}
+        {{ form.num_of_tickets() }}
+        {% for error in form.num_of_tickets.errors %}
+            {{ error }}
+        {% endfor %}
+        <br /> 
+        {{ form.price.label }}
+        {{ form.price() }}
+        {% for error in form.price.errors %}
+            {{ error }}
+        {% endfor %}
+        {{ form.submit() }}
+    </form>
+    <p>{{ message }}</p>
+</article>
+</section>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block main_content %}
+<p> we are extremely sorry to inform you that tickets for {{error_gig["artist_name"]}}, on the {{error_gig["gig_date"]}},
+    are unfortunately out of stock </p>
+<p>Below there is a list of gigs we recommend based off you're previous choice</p>
+
+<section class="container">
+    <h2>Recommenced Gigs</h2>
+{% for gig in recommended_gigs %}
+<table>
+<tr>
+    <td>{{ gig["artist_name"] }}</td>
+    <td>£{{ gig["price"] }}</td>
+    <td>{{gig["genre"]}}</td>
+    <td><a href="{{ url_for('gig_info', gig_id=gig['gig_id'] ) }}">See Details</a></td>
+</tr>
+</table>
+{%endfor%}
+</section>
+{% endblock %}

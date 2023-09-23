@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <section>
+        <h1>Search Gigs</h1>
+        <form method="post" action="">
+            {{form.hidden_tag()}}
+            {{ form.artist_name.label }}
+            {{ form.artist_name() }} 
+            {{ form.genre.label }}
+            {{ form.genre() }}
+            <div class="submit">{{ form.submit() }}</div>
+        </form>
+    </section>
+    <section class="container">
+        <h1 class="Big">Gigs</h1>
+        <p id="message">{{message}}</p>
+        {% for gig in gigs %}
+        <table class="rec_gig">
+            <tr>
+                <th>Artist</th>
+                <th>Price</th>
+                <th colspan="2">Genre</th>
+            </tr>
+
+            <tr>
+                    <td>{{ gig["artist_name"] }}</td>
+                    <td>£{{ gig["price"] }}</td>
+                    <td>{{ gig["genre"] }}</td>
+                    <td><a href="{{ url_for('gig_info', gig_id=gig['gig_id'] ) }}">See Details</a></td>
+
+            </tr>
+        {% endfor %}
+        </table>
+    </section>
+    <section id="gig_reg">
+        <article>
+            <h2>Register Your Own Gig!</h2>
+            <p>Create & Share your passions,with others</p>
+            <a href="{{ url_for('GigRegistration') }}">Register a Gig!</a>
+        </article>
+        </section>
+        {{message}}
+    
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Ticket Sever</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}" />
+</head>
+
+<body>
+    <nav>
+        <ul>
+               <li><a href="{{ url_for('home') }}">Ticket Sever</a></li>
+               <li><a href="{{ url_for('cart') }}">Cart</a></li>
+               <li><a href="{{ url_for('gigs') }}">Gigs</a></li>
+               {% if session["username"] %}
+               <li><a href="{{ url_for('account') }}">Account</a></li> 
+               
+               {% else %}
+               <li><a href="{{ url_for('login') }}">Sign Up/Login</a></li>
+               {% endif %}
+               
+        </ul>
+ </nav>
+    {% block main_content %}
+
+    {% endblock %}
+</body>
+
+
+</html>
