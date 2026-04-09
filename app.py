@@ -17,8 +17,8 @@ app.config["SESSION_TYPE"]="filesystem"
 app.config["SECRET_KEY"]="this-is-my-secret"
 app.config['MAIL_SERVER']='smtp.office365.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'TicketSever536@outlook.com'
-app.config['MAIL_PASSWORD'] = 'caProject2023'
+app.config['MAIL_USERNAME'] = '***'
+app.config['MAIL_PASSWORD'] = '***'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 app.teardown_appcontext(close_db)
